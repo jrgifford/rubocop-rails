@@ -40,6 +40,10 @@ module RuboCop
         PATTERN
 
         def on_send(node)
+          rails_env?(node) do |name|
+            add_offense(node.loc.selector, message: "Don't do that")
+          end
+
           unknown_environment_predicate?(node) do |name|
             add_offense(node.loc.selector, message: message(name))
           end

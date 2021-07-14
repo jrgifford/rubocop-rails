@@ -70,6 +70,7 @@ RSpec.describe RuboCop::Cop::Rails::UnknownEnv, :config do
     expect_no_offenses(<<~RUBY)
       Rails.env.production?
       Rails.env == 'production'
+      Rails.env
     RUBY
   end
 end
